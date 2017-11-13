@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.lmy</groupId>
+    <artifactId>easy-devils</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>devils-common</module>
+        <module>devils-rpc</module>
+        <module>devils-demo</module>
+    </modules>
+
+    <name>easy-devils</name>
+    <description>分布式服务框架</description>
+    <url>https://github.com/limengyu1990/easy-devils</url>
+    <developers>
+        <developer>
+            <name>limengyu</name>
+            <email>limengyu1990@163.com</email>
+            <organization>limengyu</organization>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:https://github.com/limengyu1990/easy-devils.git</connection>
+        <url>https://github.com/limengyu1990/easy-devils</url>
+        <developerConnection>scm:git:https://github.com/limengyu1990/easy-devils.git</developerConnection>
+    </scm>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
