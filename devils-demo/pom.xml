@@ -10,6 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>devils-demo</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>devils-demo-api</module>
+        <module>devils-demo-client</module>
+        <module>devils-demo-server</module>
+    </modules>
 
 
 </project>
