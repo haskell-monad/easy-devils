@@ -8,6 +8,30 @@
     <artifactId>easy-devils</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <netty.version>4.1.0.Final</netty.version>
+        <netty.groupId>io.netty</netty.groupId>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.source.jdk>1.8</java.source.jdk>
+        <spring.version>4.2.5.RELEASE</spring.version>
+        <snappy-java.version>1.1.1.6</snappy-java.version>
+        <org.slf4j.version>1.7.5</org.slf4j.version>
+        <apache.curator.version>2.7.1</apache.curator.version>
+        <esotericsoftware.kryo.version>2.24.0</esotericsoftware.kryo.version>
+        <caucho.hession.version>4.0.38</caucho.hession.version>
+        <google.guava.version>17.0</google.guava.version>
+        <commons-pool2.version>2.2</commons-pool2.version>
+        <alibaba.fastjson.version>1.1.36</alibaba.fastjson.version>
+        <logback-classic.version>1.0.13</logback-classic.version>
+        <log4j.version>1.2.16</log4j.version>
+        <commons-lang3.version>3.1</commons-lang3.version>
+        <jersey.version>1.19</jersey.version>
+        <marshalling.version>2.0.2.Final</marshalling.version>
+        <protostuff.version>1.5.2</protostuff.version>
+    </properties>
+
     <modules>
         <module>devils-common</module>
         <module>devils-rpc</module>
