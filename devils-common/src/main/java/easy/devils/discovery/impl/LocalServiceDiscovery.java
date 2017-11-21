@@ -1,64 +1,99 @@
 package easy.devils.discovery.impl;
 
-import easy.devils.discovery.AbstractServiceDiscovery;
-import easy.devils.discovery.AbstractServiceEventListener;
-import org.apache.curator.x.discovery.ServiceInstance;
-
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+import org.apache.curator.x.discovery.ServiceInstance;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.common.base.Splitter;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+
+import easy.devils.discovery.AbstractServiceDiscovery;
+import easy.devils.discovery.IServiceEventListener;
 
 /**
  * 本地Map服务注册中心
  * @author limengyu
  * @create 2017/11/18
  */
-public class LocalServiceDiscovery extends AbstractServiceDiscovery {
+public class LocalServiceDiscovery<T> extends AbstractServiceDiscovery<T> {
+
+    private static final Logger logger = LoggerFactory.getLogger(LocalServiceDiscovery.class);
+    /**
+     * Map<服务id，服务实例>
+     */
+    private Map<String,ServiceInstance<T>> REGISTER_CENTER = Maps.newConcurrentMap();
+
+
     @Override
     public void start() {
 
     }
 
-    @Override
-    public void registerService(ServiceInstance serviceInstance) {
-
+    public void registerLocal(String serviceName,String addressList) throws Exception {
+        logger.debug("serviceName: {},addressList: {}",serviceName,addressList);
+        Iterator<String> iterator = Splitter.on(",").split(addressList).iterator();
+        while (iterator.hasNext()){
+            String address = iterator.next();
+            String[] hostPort = address.split(":");
+            if(hostPort == null || hostPort.length != 2){
+                continue;
+            }
+            ServiceInstance<T> serviceInstance = ServiceInstance
+                    .<T>builder()
+                    .id(UUID.randomUUID().toString().replace("-", ""))
+                    .name(serviceName)
+                    .address(hostPort[0])
+                    .port(Integer.parseInt(hostPort[1]))
+                    .build();
+            registerService(serviceInstance);
+        }
     }
 
     @Override
-    public void unregisterService(ServiceInstance serviceInstance) {
-
+    public void registerService(ServiceInstance<T> serviceInstance) {
+        REGISTER_CENTER.put(serviceInstance.getId(),serviceInstance);
+        notify(serviceInstance, IServiceEventListener.ServiceEventType.ON_REGISTER);
     }
 
     @Override
-    public void updateServive(ServiceInstance serviceInstance) {
-
+    public void unregisterService(ServiceInstance<T> serviceInstance) {
+        REGISTER_CENTER.remove(serviceInstance.getId());
+        notify(serviceInstance, IServiceEventListener.ServiceEventType.ON_UNREGISTER);
     }
 
     @Override
-    public void subscribeService(AbstractServiceEventListener eventListener) {
-
-    }
-
-    @Override
-    public void subscribeServive(String serviceName, AbstractServiceEventListener eventListener) {
-
-    }
-
-    @Override
-    public void unSubscribeService(AbstractServiceEventListener eventListener) {
-
-    }
-
-    @Override
-    public void unSubscribeService(String serviceName, AbstractServiceEventListener eventListener) {
-
+    public void updateService(ServiceInstance<T> serviceInstance) {
+        REGISTER_CENTER.put(serviceInstance.getId(),serviceInstance);
+        notify(serviceInstance, IServiceEventListener.ServiceEventType.ON_UPDATE);
     }
 
     @Override
     public Collection<String> queryServiceNameList() {
-        return null;
+        if(REGISTER_CENTER.size() == 0){
+            return Lists.newArrayList();
+        }
+        List<String> nameList = REGISTER_CENTER.values().stream().map(ServiceInstance::getName).collect(Collectors.toList());
+        return nameList;
     }
 
     @Override
-    public Collection<ServiceInstance> queryServiceInstance(String serviceName) {
-        return null;
+    public Collection<ServiceInstance<T>> queryServiceInstance(String serviceName) {
+        List<ServiceInstance<T>> instanceList = REGISTER_CENTER.values().stream()
+                .filter(instance -> instance.getName().equals(serviceName))
+                .collect(Collectors.toList());
+        return instanceList;
+    }
+
+    @Override
+    public ServiceInstance<T> queryServiceInstance(String serviceName, String instanceId) throws Exception {
+        return REGISTER_CENTER.get(instanceId);
     }
 }

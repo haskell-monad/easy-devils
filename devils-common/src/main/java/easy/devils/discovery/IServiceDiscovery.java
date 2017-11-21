@@ -14,19 +14,19 @@ public interface IServiceDiscovery<T> {
      * 注册服务
      * @param serviceInstance
      */
-    void registerService(ServiceInstance<T> serviceInstance);
+    void registerService(ServiceInstance<T> serviceInstance) throws Exception;
 
     /**
      * 取消注册服务
      * @param serviceInstance
      */
-    void unregisterService(ServiceInstance<T> serviceInstance);
+    void unregisterService(ServiceInstance<T> serviceInstance) throws Exception;
 
     /**
      * 更新服务
      * @param serviceInstance
      */
-    void updateServive(ServiceInstance<T> serviceInstance);
+    void updateService(ServiceInstance<T> serviceInstance) throws Exception;
 
     /**
      * 订阅服务
@@ -38,7 +38,7 @@ public interface IServiceDiscovery<T> {
      * @param serviceName
      * @param eventListener
      */
-    void subscribeServive(String serviceName,AbstractServiceEventListener<T> eventListener);
+    void subscribeService(String serviceName,AbstractServiceEventListener<T> eventListener);
     /**
      * 取消订阅服务
      * @param eventListener
@@ -55,12 +55,20 @@ public interface IServiceDiscovery<T> {
      * 查询所有服务名称
      * @return
      */
-    Collection<String> queryServiceNameList();
+    Collection<String> queryServiceNameList() throws Exception;
 
     /**
      * 根据服务名称查询所有服务实例
      * @param serviceName
      * @return
      */
-    Collection<ServiceInstance<T>> queryServiceInstance(String serviceName);
+    Collection<ServiceInstance<T>> queryServiceInstance(String serviceName) throws Exception;
+
+    /**
+     * 根据服务名称和服务实例id查询实例
+     * @param serviceName
+     * @param instanceId
+     * @return
+     */
+    ServiceInstance<T> queryServiceInstance(String serviceName,String instanceId) throws Exception;
 }
