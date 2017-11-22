@@ -1,6 +1,6 @@
-package easy.devils.server;
+package easy.devils.demo.server;
 
-import easy.devils.api.HelloService;
+import easy.devils.demo.api.HelloService;
 
 /**
  * @author limengyu

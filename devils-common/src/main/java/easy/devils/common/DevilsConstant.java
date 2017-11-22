@@ -8,6 +8,16 @@ public class DevilsConstant {
 
     public static final String DEFAULT_CHARSET = "UTF-8";
     /**
+     * 权重最大值
+     */
+    public static final int WEIGHT_MAX = 100;
+
+    /**
+     * 权重最小值
+     */
+    public static final int WEIGHT_MIN = 1;
+
+    /**
      * zk基础路径
      *
      */

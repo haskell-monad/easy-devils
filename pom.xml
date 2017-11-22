@@ -36,6 +36,7 @@
         <module>devils-common</module>
         <module>devils-rpc</module>
         <module>devils-demo</module>
+        <module>devils-web</module>
     </modules>
 
     <name>easy-devils</name>
@@ -48,6 +49,25 @@
             <organization>limengyu</organization>
         </developer>
     </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>${commons-pool2.version}</version>
+        </dependency>
+    </dependencies>
+
     <scm>
         <connection>scm:git:https://github.com/limengyu1990/easy-devils.git</connection>
         <url>https://github.com/limengyu1990/easy-devils</url>

@@ -5,14 +5,22 @@ package easy.devils.exception;
  * @create 2017/11/21
  */
 public class DevilsExceptionConstant {
-    //503
+    /**
+     * 503
+     */
     public static final int SERVICE_DEFAULT_ERROR_CODE = 10001;
     public static final int SERVICE_TIMEOUT_ERROR_CODE = 10002;
-    //404
+    /**
+     * 404
+     */
     public static final int SERVICE_NOT_FOUND_ERROR_CODE = 10010;
-    //403
+    /**
+     * 403
+     */
     public static final int SERVICE_REQUEST_LENGTH_LIMIT_ERROR_CODE = 10020;
-    //503 framework error
+    /**
+     * 503 framework error
+     */
     public static final int FRAMEWORK_DEFAULT_ERROR_CODE = 20001;
     public static final int FRAMEWORK_ENCODE_ERROR_CODE = 20002;
     public static final int FRAMEWORK_DECODE_ERROR_CODE = 20003;
@@ -21,7 +29,7 @@ public class DevilsExceptionConstant {
     /**
      * 框架默认错误
      */
-    public static final DevilsErrorMessage FRAMEWORK_FEFAULT_ERROR =
+    public static final DevilsErrorMessage FRAMEWORK_DEFAULT_ERROR =
             new DevilsErrorMessage(500,FRAMEWORK_DEFAULT_ERROR_CODE,"framework default error");
 
     public static final DevilsErrorMessage FRAMEWORK_ENCODE_ERROR =

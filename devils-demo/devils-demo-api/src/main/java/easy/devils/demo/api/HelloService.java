@@ -1,4 +1,4 @@
-package easy.devils.api;
+package easy.devils.demo.api;
 
 import easy.devils.annotation.MethodProvider;
 import easy.devils.annotation.ServiceProvider;

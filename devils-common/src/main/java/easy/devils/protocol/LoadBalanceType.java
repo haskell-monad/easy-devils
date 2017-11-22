@@ -7,5 +7,7 @@ public enum LoadBalanceType {
     RANDOM,
     ROBBIN,
     HASH,
-    WEIGHT
+    WEIGHT,
+    WEIGHT_RANDOM,
+    POLL
 }

@@ -1,16 +1,22 @@
 package easy.devils.protocol;
 
 import easy.devils.codec.serialize.ISerialize;
+import easy.devils.codec.serialize.impl.AvroSerializeImpl;
+import easy.devils.codec.serialize.impl.FastJsonSerializeImpl;
+import easy.devils.codec.serialize.impl.Hessian2SerializeImpl;
 import easy.devils.codec.serialize.impl.JavaSerializeImpl;
+import easy.devils.codec.serialize.impl.KryoSerializeImpl;
+import easy.devils.codec.serialize.impl.MarshallingSerializeImpl;
 import easy.devils.codec.serialize.impl.ProtoStuffSerializeImpl;
+import easy.devils.codec.serialize.impl.ThriftSerializeImpl;
 
 /**
  * @author limengyu
  */
 public enum SerializeType {
 
-    JAVA("java",(byte)0),
-    HESSIAN2("hessian2",(byte)1),
+    JAVA("Java",(byte)0),
+    HESSIAN2("Hessian2",(byte)1),
     FastJson("FastJson",(byte)2),
     Kryo("Kryo",(byte)3),
     Marshall("Marshall",(byte)4),
@@ -48,40 +54,22 @@ public enum SerializeType {
 
     public static ISerialize getSerializeTypeByExtend(byte value){
         switch (value & 0x7){
-//            case (0x0):
-//                return new JavaSerializeImpl();
-//            case (0x1):
-//                return new Hessian2SerializeImpl();
-//            case (0x2):
-//                return new FastJsonSerializeImpl();
-//            case (0x3):
-//                return new KryoSerializeImpl();
-//            case (0x4):
-//                return new MarshallingSerializeImpl();
-//            case (0x5):
-//                return new ProtoStuffSerializeImpl();
-//            case (0x6):
-//                return new ThriftSerializeImpl();
-//            case (0x7):
-//                return new AvroSerializeImpl();
-//            default:
-//                return new JavaSerializeImpl();
             case (0x0):
                 return new JavaSerializeImpl();
             case (0x1):
-                return new JavaSerializeImpl();
+                return new Hessian2SerializeImpl();
             case (0x2):
-                return new JavaSerializeImpl();
+                return new FastJsonSerializeImpl();
             case (0x3):
-                return new JavaSerializeImpl();
+                return new KryoSerializeImpl();
             case (0x4):
-                return new JavaSerializeImpl();
+                return new MarshallingSerializeImpl();
             case (0x5):
                 return new ProtoStuffSerializeImpl();
             case (0x6):
-                return new JavaSerializeImpl();
+                return new ThriftSerializeImpl();
             case (0x7):
-                return new JavaSerializeImpl();
+                return new AvroSerializeImpl();
             default:
                 return new JavaSerializeImpl();
         }

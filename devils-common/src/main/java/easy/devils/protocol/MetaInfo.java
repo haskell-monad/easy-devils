@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author limengyu
  * @create 2017/11/21
  */
-public class MetaData implements Serializable{
+public class MetaInfo implements Serializable{
     private static final long serialVersionUID = 4092446890523646282L;
 
     private HaStrategyType haStrategyType;
@@ -94,7 +94,7 @@ public class MetaData implements Serializable{
 
     @Override
     public String toString() {
-        return "MetaData{" +
+        return "MetaInfo{" +
                 "haStrategyType=" + haStrategyType +
                 ", loadBalanceType=" + loadBalanceType +
                 ", avgTime=" + avgTime +
