@@ -14,15 +14,15 @@
 
     <context:property-placeholder location="classpath:/*.properties"/>
 
+    <!--注册中心配置-->
     <devils:registry id="register" name="register-center" protocol="local" address="127.0.0.1:2181"/>
 
+    <!--Http服务-->
     <devils:server registry="register" id="devilsHttpService" host="192.168.99.60" startHttpServer="true"/>
 
-    <devils:in
-
-    <forest:interceptors>
-        <forest:interceptor id="metricInterceptor" class="com.zhizus.forest.support.MetricInterceptor" auto-match="public *(*)"/>
-    </forest:interceptors>
-
+    <!--拦截器配置-->
+    <devils:interceptors>
+        <devils:interceptor id="metricInterceptor" class="xxxx" auto-match="public *(*)"//>
+    </devils:interceptors>
 
 </beans>
