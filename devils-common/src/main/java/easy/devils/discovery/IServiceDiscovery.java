@@ -13,18 +13,21 @@ public interface IServiceDiscovery<T> {
     /**
      * 注册服务
      * @param serviceInstance
+     * @throws Exception
      */
     void registerService(ServiceInstance<T> serviceInstance) throws Exception;
 
     /**
      * 取消注册服务
      * @param serviceInstance
+     * @throws Exception
      */
     void unregisterService(ServiceInstance<T> serviceInstance) throws Exception;
 
     /**
      * 更新服务
      * @param serviceInstance
+     * @throws Exception
      */
     void updateService(ServiceInstance<T> serviceInstance) throws Exception;
 
@@ -54,6 +57,7 @@ public interface IServiceDiscovery<T> {
     /**
      * 查询所有服务名称
      * @return
+     * @throws Exception
      */
     Collection<String> queryServiceNameList() throws Exception;
 
@@ -61,6 +65,7 @@ public interface IServiceDiscovery<T> {
      * 根据服务名称查询所有服务实例
      * @param serviceName
      * @return
+     * @throws Exception
      */
     Collection<ServiceInstance<T>> queryServiceInstance(String serviceName) throws Exception;
 
@@ -69,6 +74,7 @@ public interface IServiceDiscovery<T> {
      * @param serviceName
      * @param instanceId
      * @return
+     * @throws Exception
      */
     ServiceInstance<T> queryServiceInstance(String serviceName,String instanceId) throws Exception;
 }

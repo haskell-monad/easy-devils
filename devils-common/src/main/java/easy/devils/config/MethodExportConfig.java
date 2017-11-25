@@ -9,6 +9,13 @@ public class MethodExportConfig {
 
     private String methodName;
 
+    public MethodExportConfig() {
+    }
+
+    public MethodExportConfig(String methodName) {
+        this.methodName = methodName;
+    }
+
     public String getMethodName() {
         return methodName;
     }

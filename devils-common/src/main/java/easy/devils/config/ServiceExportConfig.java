@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 /**
- * 暴露的服务信息
+ * 暴露的服务-方法信息
  * @author limengyu
  * @create 2017/11/22
  */

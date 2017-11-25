@@ -36,7 +36,7 @@ public @interface ServiceProvider {
      * 超时时间(毫秒)
      * @return
      */
-    long connectionTimeOut() default DevilsConstant.CONNECTION_TIME_OUT;
+    int connectionTimeOut() default DevilsConstant.CONNECTION_TIME_OUT;
 
     /**
      * 权重

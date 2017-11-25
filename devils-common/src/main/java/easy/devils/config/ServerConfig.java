@@ -3,7 +3,7 @@ package easy.devils.config;
 import org.springframework.beans.factory.annotation.Value;
 
 /**
- *
+ * 通过ServerBeanDefinitionParse注入该bean
  * @author limengyu
  * @create 2017/11/22
  */

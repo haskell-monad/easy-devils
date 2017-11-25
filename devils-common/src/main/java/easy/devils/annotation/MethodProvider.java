@@ -16,7 +16,7 @@ import java.lang.annotation.Target;
 public @interface MethodProvider {
 
     String methodName() default "";
-    long timeout() default DevilsConstant.CLIENT_TIME_OUT;
+    int timeout() default DevilsConstant.CLIENT_TIME_OUT;
     SerializeType serialize() default SerializeType.ProtoBuf;
     CompressType compress() default CompressType.SNAPPY;
 }

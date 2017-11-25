@@ -7,6 +7,17 @@ package easy.devils.common;
 public class DevilsConstant {
 
     public static final String DEFAULT_CHARSET = "UTF-8";
+
+    /**
+     * 暴露服务默认端口
+     */
+    public static final int SERVICE_DEFAULT_PORT = 9999;
+
+    /**
+     * 本地模式默认暴露服务地址
+     */
+    public static final String LOCAL_DEFAULT_ADDRESS = "localhost:"+SERVICE_DEFAULT_PORT;
+
     /**
      * 权重最大值
      */
@@ -25,11 +36,11 @@ public class DevilsConstant {
     /**
      * 服务端连接超时
      */
-    public static final long CONNECTION_TIME_OUT = 2000;
+    public static final int CONNECTION_TIME_OUT = 2000;
     /**
      * 客户端连接超时
      */
-    public static final long CLIENT_TIME_OUT = 2000;
+    public static final int CLIENT_TIME_OUT = 2000;
     /**
      * 16-byte
      * 魔数 2-byte

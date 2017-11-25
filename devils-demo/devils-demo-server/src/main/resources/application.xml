@@ -18,11 +18,11 @@
     <devils:registry id="register" name="register-center" protocol="local" address="127.0.0.1:2181"/>
 
     <!--Http服务-->
-    <devils:server registry="register" id="devilsHttpService" host="192.168.99.60" startHttpServer="true"/>
+    <devils:server id="devilsHttpService" registry="register" host="192.168.99.60" startHttpServer="true"/>
 
     <!--拦截器配置-->
     <devils:interceptors>
-        <devils:interceptor id="metricInterceptor" class="xxxx" auto-match="public *(*)"//>
+        <devils:interceptor id="metricInterceptor" class="xxxx" auto-match="public *(*)"/>
     </devils:interceptors>
 
 </beans>

@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import easy.devils.common.DevilsConstant;
 import org.apache.curator.x.discovery.ServiceInstance;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +32,15 @@ public class LocalServiceDiscovery<T> extends AbstractServiceDiscovery<T> {
      */
     private Map<String,ServiceInstance<T>> REGISTER_CENTER = Maps.newConcurrentMap();
 
+    private String address;
+
+    public LocalServiceDiscovery() {
+        this.address = DevilsConstant.LOCAL_DEFAULT_ADDRESS;
+    }
+
+    public LocalServiceDiscovery(String address) {
+        this.address = address;
+    }
 
     @Override
     public void start() {
@@ -95,5 +105,13 @@ public class LocalServiceDiscovery<T> extends AbstractServiceDiscovery<T> {
     @Override
     public ServiceInstance<T> queryServiceInstance(String serviceName, String instanceId) throws Exception {
         return REGISTER_CENTER.get(instanceId);
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
