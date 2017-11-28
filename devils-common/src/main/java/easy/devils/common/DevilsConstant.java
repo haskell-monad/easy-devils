@@ -49,7 +49,7 @@ public class DevilsConstant {
      * 消息Id      8-byte
      * payload长度 4-byte
      */
-    public static final short MAGIC = (short)0xF0F0;
+    public static final short MAGIC = (short)0xDEF0;
 
 
 

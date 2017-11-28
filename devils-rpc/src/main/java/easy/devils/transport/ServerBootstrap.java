@@ -38,6 +38,7 @@ public class ServerBootstrap {
     private ServerConfig serverConfig;
     private ApplicationContext applicationContext;
     private IServiceDiscovery serviceDiscovery;
+    private String host;
 
     /**
      * 唯一标识(service|port)
@@ -153,6 +154,14 @@ public class ServerBootstrap {
 
     public IServiceDiscovery getServiceDiscovery() {
         return serviceDiscovery;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
     }
 
     public void setServiceDiscovery(IServiceDiscovery serviceDiscovery) {

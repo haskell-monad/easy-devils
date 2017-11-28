@@ -13,12 +13,12 @@ import org.springframework.core.io.ResourceLoader;
 import org.w3c.dom.Element;
 
 /**
- * Server-bean定义
+ * Server-bean定义,注入ServerBootstrap
  * 启动DevilsServer、HttpServer
  * @author limengyu
  * @create 2017/11/23
  */
-public class ServerBeanDefinitionParse implements BeanDefinitionParser{
+public class ServerBootstrapBeanDefinitionParse implements BeanDefinitionParser{
 
     @Override
     public BeanDefinition parse(Element element, ParserContext parserContext) {
@@ -35,6 +35,7 @@ public class ServerBeanDefinitionParse implements BeanDefinitionParser{
         BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(ServerBootstrap.class);
         builder.addPropertyValue("startHttpServer", StringUtils.isBlank(startHttpServer) ? false : Boolean.parseBoolean(startHttpServer));
         builder.addPropertyValue("applicationContext",applicationContext);
+        builder.addPropertyReference("serviceDiscovery",registry);
         builder.setInitMethodName("start");
 
         parserContext.getRegistry().registerBeanDefinition(beanId,builder.getBeanDefinition());
