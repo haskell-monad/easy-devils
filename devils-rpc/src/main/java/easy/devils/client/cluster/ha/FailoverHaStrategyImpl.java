@@ -1,9 +1,12 @@
 package easy.devils.client.cluster.ha;
 
+import easy.devils.client.cluster.loadbalance.AbstractLoadBalance;
 import easy.devils.codec.DevilsMessage;
 import easy.devils.codec.DevilsRequest;
 import easy.devils.protocol.ServerInfo;
 import easy.devils.transport.NettyClient;
+import org.apache.commons.pool2.impl.GenericKeyedObjectPool;
+import org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig;
 
 /**
  * @author limengyu
@@ -11,13 +14,12 @@ import easy.devils.transport.NettyClient;
  */
 public class FailoverHaStrategyImpl extends AbstractHaStrategy {
 
+    public FailoverHaStrategyImpl(GenericKeyedObjectPoolConfig config) {
+        super(config);
+    }
+
     @Override
-    public Object call(DevilsMessage<DevilsRequest> message, ServerInfo<NettyClient> serverInfo) {
-        //获取所有可使用的节点
-        //然后根据负载算法获取一个可使用的节点发起调用
-
-
-
+    public Object call(DevilsMessage<DevilsRequest> message, AbstractLoadBalance loadBalance) {
         return null;
     }
 }

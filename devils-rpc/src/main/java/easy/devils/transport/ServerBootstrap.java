@@ -100,7 +100,7 @@ public class ServerBootstrap {
             }
             UNIQUE_SERVICE_KEY.add(uniqueKey);
             try {
-                //启动DevilsServer
+                //注册服务并启动DevilsServer
                 DevilsServer devilsServer = devilsServerFactory.createDevilsServer(serviceRouting, serviceExportConfig.getPort());
                 devilsServer.startServer();
                 ServiceInstance<MetaInfo> serviceInstance = ServiceInstance

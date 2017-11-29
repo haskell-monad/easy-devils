@@ -2,6 +2,8 @@ package easy.devils.protocol;
 
 import org.apache.curator.x.discovery.ServiceInstance;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * 服务器信息
  * @author limengyu
@@ -12,6 +14,8 @@ public class ServerInfo<T> {
     private String host;
     private int port;
     private T client;
+
+    private AtomicInteger count = new AtomicInteger(0);
 
     public ServerInfo() {
     }
@@ -45,5 +49,7 @@ public class ServerInfo<T> {
         this.client = client;
     }
 
-
+    public void incrementAndGet(){
+        count.incrementAndGet();
+    }
 }

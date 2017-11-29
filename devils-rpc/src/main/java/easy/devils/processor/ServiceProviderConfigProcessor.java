@@ -21,7 +21,8 @@ public class ServiceProviderConfigProcessor implements IAnnotationProcessor{
     }
 
     @Override
-    public void process() {
+    public void process(Class<?> clazz, Method method, Object obj) {
 
     }
+
 }
