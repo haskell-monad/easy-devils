@@ -36,7 +36,7 @@ public class DevilsConstant {
     /**
      * 服务端连接超时
      */
-    public static final int CONNECTION_TIME_OUT = 2000;
+    public static final int CONNECTION_TIME_OUT = 5000;
     /**
      * 客户端连接超时
      */
@@ -51,7 +51,14 @@ public class DevilsConstant {
      */
     public static final short MAGIC = (short)0xDEF0;
 
+    /**
+     * 16-byte
+     */
+    public static final int HEADER_SIZE = 2 << 3;
 
-
+    /**
+     * 心跳code
+     */
+    public static final int HEARTBEAT_CODE = -1;
 
 }

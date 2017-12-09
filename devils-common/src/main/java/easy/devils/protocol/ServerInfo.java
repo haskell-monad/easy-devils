@@ -52,4 +52,13 @@ public class ServerInfo<T> {
     public void incrementAndGet(){
         count.incrementAndGet();
     }
+
+    @Override
+    public String toString() {
+        return "ServerInfo{" +
+                "host='" + host + '\'' +
+                ", port=" + port +
+                ", client=" + client +
+                '}';
+    }
 }

@@ -29,6 +29,14 @@ public class DevilsHeader {
         this.extend = extend;
     }
 
+    public DevilsHeader(short magic, byte version, byte extend, long messageId, int payLoadSize) {
+        this.magic = magic;
+        this.version = version;
+        this.extend = extend;
+        this.messageId = messageId;
+        this.messageSize = payLoadSize;
+    }
+
     public short getMagic() {
         return magic;
     }

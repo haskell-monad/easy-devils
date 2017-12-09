@@ -86,6 +86,11 @@ public class ServerInfoManager<T> extends AbstractServiceEventListener {
 		}
 		return result;
 	}
+
+	public void fail(ServerInfo serverInfo){
+		failoverCheckManager.fail(serverInfo);
+	}
+
 	@Override
 	public void onRegister(ServiceInstance serviceInstance) {
 		init();

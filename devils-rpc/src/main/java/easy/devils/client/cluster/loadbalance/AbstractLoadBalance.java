@@ -18,8 +18,4 @@ public abstract class AbstractLoadBalance<T> extends ServerInfoManager<T> implem
         super(serviceDiscovery, serviceName, failoverCheckManager);
     }
 
-    public void fail(ServerInfo serverInfo){
-        fail(serverInfo);
-    }
-
 }

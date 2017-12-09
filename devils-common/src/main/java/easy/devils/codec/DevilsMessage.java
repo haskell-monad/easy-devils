@@ -9,6 +9,14 @@ public class DevilsMessage<T>{
 
     private T content;
 
+    public DevilsMessage() {
+    }
+
+    public DevilsMessage(DevilsHeader devilsHeader, T content) {
+        this.devilsHeader = devilsHeader;
+        this.content = content;
+    }
+
     public DevilsHeader getDevilsHeader() {
         return devilsHeader;
     }

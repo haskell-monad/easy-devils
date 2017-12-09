@@ -26,7 +26,7 @@ public class Connection implements Closeable{
      * 保存请求信息
      * <消息id,netty响应>
      */
-    private static final Map<Long,NettyResponseFuture<DevilsResponse>> CALLBACK_QUEUE = Maps.newConcurrentMap();
+    public static final Map<Long,NettyResponseFuture<DevilsResponse>> CALLBACK_QUEUE = Maps.newConcurrentMap();
     /**
      * 消息id
      */

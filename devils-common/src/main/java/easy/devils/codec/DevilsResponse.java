@@ -1,5 +1,7 @@
 package easy.devils.codec;
 
+import easy.devils.exception.DevilsErrorMessage;
+
 import java.io.Serializable;
 
 /**
@@ -26,6 +28,11 @@ public class DevilsResponse implements Serializable {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public void setDevilsErrorMessage(DevilsErrorMessage devilsErrorMessage){
+        this.message = devilsErrorMessage.getMessage();
+        this.code = devilsErrorMessage.getErrorCode();
     }
 
     public Object getResult() {
