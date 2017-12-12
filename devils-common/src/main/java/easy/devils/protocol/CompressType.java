@@ -45,4 +45,14 @@ public enum CompressType {
                 return new NoneCompress();
         }
     }
+
+    public static CompressType getCompressTypeByName(String name){
+        if(GZIP.name().equals(name)){
+            return GZIP;
+        }else if(SNAPPY.name().equals(name)){
+            return SNAPPY;
+        }else{
+            return NONE;
+        }
+    }
 }

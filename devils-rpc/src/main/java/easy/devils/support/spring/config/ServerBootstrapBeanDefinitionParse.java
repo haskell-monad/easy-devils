@@ -1,5 +1,6 @@
 package easy.devils.support.spring.config;
 
+import easy.devils.config.ServerConfig;
 import easy.devils.support.spring.SpringUtils;
 import easy.devils.transport.DevilsServer;
 import easy.devils.transport.ServerBootstrap;
@@ -30,7 +31,8 @@ public class ServerBootstrapBeanDefinitionParse implements BeanDefinitionParser{
 
         ApplicationContext applicationContext = (ApplicationContext)parserContext.getReaderContext().getReader().getResourceLoader();
 
-
+        //注册ServerConfig
+        parserContext.getRegistry().registerBeanDefinition(SpringUtils.getBeanId(null,ServerConfig.class),BeanDefinitionBuilder.genericBeanDefinition(ServerConfig.class).getBeanDefinition());
         //注册ServerBootstrap
         BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(ServerBootstrap.class);
         builder.addPropertyValue("startHttpServer", StringUtils.isBlank(startHttpServer) ? false : Boolean.parseBoolean(startHttpServer));

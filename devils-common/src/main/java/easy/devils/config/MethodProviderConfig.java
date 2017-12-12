@@ -1,5 +1,6 @@
 package easy.devils.config;
 
+import easy.devils.common.DevilsConstant;
 import easy.devils.protocol.CompressType;
 import easy.devils.protocol.SerializeType;
 
@@ -61,6 +62,12 @@ public class MethodProviderConfig {
             Builder builder = new Builder();
             builder.methodConfig = new MethodProviderConfig();
             return builder;
+        }
+        public Builder loadDefault(){
+            this.methodConfig.setCompressType(CompressType.DEFAULT_COMPRESS);
+            this.methodConfig.setSerializeType(SerializeType.DEFAULT_SERIALIZE);
+            this.methodConfig.setTimeout(DevilsConstant.CLIENT_TIME_OUT);
+            return this;
         }
         public Builder setSerialize(SerializeType serializeType){
             this.methodConfig.setSerializeType(serializeType);

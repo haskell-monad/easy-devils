@@ -17,6 +17,9 @@ public class SpringUtils {
      * @return
      */
     public static String getBeanId(Element element,Class<?> clazz){
+        if(element == null){
+            return StringUtils.uncapitalize(clazz.getSimpleName());
+        }
         String beanId = element.getAttribute("id");
         return StringUtils.isNotBlank(beanId) ? beanId : StringUtils.uncapitalize(clazz.getSimpleName());
     }

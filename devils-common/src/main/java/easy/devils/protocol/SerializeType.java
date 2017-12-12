@@ -24,6 +24,8 @@ public enum SerializeType {
     Thrift("Thrift",(byte)6),
     Avro("Avro",(byte)7);
 
+    public static final SerializeType DEFAULT_SERIALIZE = JAVA;
+
     SerializeType(String name,byte value){
         this.name = name;
         this.value = value;

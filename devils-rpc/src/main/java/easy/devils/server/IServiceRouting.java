@@ -10,6 +10,7 @@ public interface IServiceRouting {
     /**
      * 根据地址查询具体的服务方法
      * @param uri /serviceName/methodName
+     * @return
      */
     MethodAction lookupMethodAction(String uri);
 }

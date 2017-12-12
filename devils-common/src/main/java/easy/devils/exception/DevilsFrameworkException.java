@@ -20,6 +20,9 @@ public class DevilsFrameworkException extends DevilsAbstractException {
     public DevilsFrameworkException(String message, DevilsErrorMessage devilsErrorMessage) {
         super(message, devilsErrorMessage);
     }
+    public DevilsFrameworkException(DevilsErrorMessage devilsErrorMessage) {
+        super(devilsErrorMessage);
+    }
 
     public DevilsFrameworkException(String message) {
         super(message,DevilsExceptionConstant.FRAMEWORK_DEFAULT_ERROR);

@@ -10,9 +10,9 @@ public class DevilsNamespaceHandler extends NamespaceHandlerSupport{
 
     @Override
     public void init() {
-        registerBeanDefinitionParser("registry",new RegisterBeanDefinitionParse());
-        registerBeanDefinitionParser("server",new ServerBootstrapBeanDefinitionParse());
         registerBeanDefinitionParser("interceptors",new InterceptorBeanDefinitionParse());
+        registerBeanDefinitionParser("registry",new RegisterBeanDefinitionParse());
         registerBeanDefinitionParser("reference",new ReferenceBeanDefinitionParse());
+        registerBeanDefinitionParser("server",new ServerBootstrapBeanDefinitionParse());
     }
 }

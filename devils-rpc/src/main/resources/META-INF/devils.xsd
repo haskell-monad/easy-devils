@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            xmlns="http://easy.devils.org/schema/devils"
+<xsd:schema xmlns="http://easy-devils.org/schema/devils"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             xmlns:tool="http://www.springframework.org/schema/tool"
             xmlns:beans="http://www.springframework.org/schema/beans"
-            targetNamespace="http://easy.devils.org/schema/devils"
+            targetNamespace="http://easy-devils.org/schema/devils"
             elementFormDefault="qualified">
 
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
@@ -250,8 +250,8 @@
                 <xsd:element ref="beans:property" minOccurs="0" maxOccurs="unbounded"/>
             </xsd:choice>
             <xsd:attribute name="id" type="xsd:ID"/>
-            <xsd:attribute name="registry" type="xsd:string" use="required"></xsd:attribute>
-            <xsd:attribute name="startHttpServer" type="xsd:boolean" use="optional"></xsd:attribute>
+            <xsd:attribute name="registry" type="xsd:string" use="required"/>
+            <xsd:attribute name="startHttpServer" type="xsd:boolean" use="optional" />
             <xsd:attribute name="host" type="xsd:string" use="optional">
                 <xsd:annotation>
                     <xsd:documentation><![CDATA[暴露指定ip,多个使用逗号分隔]]></xsd:documentation>

@@ -19,7 +19,7 @@ public abstract class AbstractServiceDiscovery<T> implements IServiceDiscovery<T
      * 服务名称,List<服务事件>
      */
     private Map<String,List<AbstractServiceEventListener<T>>> SERVICE_EVENT_MAP = Maps.newConcurrentMap();
-
+    private String name;
 
     public abstract void start() throws Exception;
 
@@ -69,5 +69,13 @@ public abstract class AbstractServiceDiscovery<T> implements IServiceDiscovery<T
         for (AbstractServiceEventListener<T> eventListener : list) {
             eventListener.onRefresh(serviceInstance,eventType);
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

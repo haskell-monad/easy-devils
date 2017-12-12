@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns="http://www.springframework.org/schema/beans"
-       xmlns:devils="http://easy.devils.org/schema/devils"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd
-        http://easy.devils.org/schema/devils
-        http://easy.devils.org/schema/devils.xsd">
 
-    <context:component-scan base-package="easy.devils.demo"/>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:devils="http://easy-devils.org/schema/devils"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://easy-devils.org/schema/devils
+            http://easy-devils.org/schema/devils.xsd">
+
+    <context:component-scan base-package="easy.devils.demo.*"/>
 
     <context:property-placeholder location="classpath:/*.properties"/>
 
@@ -18,11 +19,11 @@
     <devils:registry id="register" name="register-center" protocol="local" address="127.0.0.1:2181"/>
 
     <!--Http服务-->
-    <devils:server id="devilsHttpService" registry="register" host="192.168.99.60" startHttpServer="true"/>
+    <devils:server id="devilsHttpService" registry="register" host="192.168.99.60" startHttpServer="false"/>
 
     <!--拦截器配置-->
-    <devils:interceptors>
-        <devils:interceptor id="metricInterceptor" class="xxxx" auto-match="public *(*)"/>
-    </devils:interceptors>
+    <!--<devils:interceptors>-->
+        <!--<devils:interceptor id="metricInterceptor" class="xxxx" auto-match="public *(*)"/>-->
+    <!--</devils:interceptors>-->
 
 </beans>

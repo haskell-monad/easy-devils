@@ -3,15 +3,15 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns="http://www.springframework.org/schema/beans"
        xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:devils="http://easy.devils.org/schema/devils"
+       xmlns:devils="http://easy-devils.org/schema/devils"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd
-        http://easy.devils.org/schema/devils
-        http://easy.devils.org/schema/devils.xsd">
+        http://easy-devils.org/schema/devils
+        http://easy-devils.org/schema/devils.xsd">
 
     <context:component-scan base-package="easy.devils.demo.client"/>
 

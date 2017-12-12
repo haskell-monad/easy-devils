@@ -17,6 +17,11 @@
             <artifactId>devils-demo-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.lmy</groupId>
+            <artifactId>devils-rpc</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
