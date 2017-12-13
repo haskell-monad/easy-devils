@@ -23,6 +23,7 @@ import easy.devils.processor.IAnnotationProcessor;
 import easy.devils.protocol.MetaInfo;
 import easy.devils.server.DevilsServiceRouting;
 import easy.devils.utils.NetUtils;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @author limengyu
@@ -68,7 +69,8 @@ public class ServerBootstrap {
      */
     private void startDevilsServer(){
         List<IAnnotationProcessor> processorList = DEFAULT_PROVIDER.getProcessorList();
-        //获取所有有@ServiceExport注解的类
+        //首先通过@ServiceExport找到所有暴露的服务@ServiceExport和方法@MethodExport
+        //然后构造ServiceExportConfig(端口来自@ServiceExport,服务名来自@ServiceProvider或者服务接口类名称)
         String[] serviceExports = applicationContext.getBeanNamesForAnnotation(ServiceExport.class);
         LOGGER.info("exist [{}] service can export.", serviceExports.length);
         for (String serviceBeanName : serviceExports) {
@@ -148,7 +150,7 @@ public class ServerBootstrap {
         return applicationContext;
     }
 
-    public void setApplicationContext(ApplicationContext applicationContext) {
+    public void setApplicationContext(ClassPathXmlApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
 

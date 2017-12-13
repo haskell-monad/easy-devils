@@ -3,6 +3,7 @@ package easy.devils.annotation;
 import easy.devils.common.DevilsConstant;
 import easy.devils.protocol.HaStrategyType;
 import easy.devils.protocol.LoadBalanceType;
+import org.springframework.stereotype.Component;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -13,6 +14,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+@Component
 public @interface ServiceProvider {
     /**
      * 服务名称
@@ -55,4 +57,10 @@ public @interface ServiceProvider {
      * @return
      */
     String[] host() default {};
+
+    /**
+     * 最大线程数
+     * @return
+     */
+    int maxThreadNum() default 1;
 }

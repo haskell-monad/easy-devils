@@ -25,10 +25,11 @@ public class ServerBootstrapBeanDefinitionParse implements BeanDefinitionParser{
     public BeanDefinition parse(Element element, ParserContext parserContext) {
 
         String beanId = SpringUtils.getBeanId(element, ServerBootstrap.class);
-        String registry = element.getAttribute("registry");
+
         String host = element.getAttribute("host");
         String startHttpServer = element.getAttribute("startHttpServer");
-
+        //注册中心
+        String registry = element.getAttribute("registry");
         ApplicationContext applicationContext = (ApplicationContext)parserContext.getReaderContext().getReader().getResourceLoader();
 
         //注册ServerConfig

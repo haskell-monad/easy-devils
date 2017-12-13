@@ -63,7 +63,7 @@ public abstract class AbstractServer {
             throw new IllegalStateException("Server already start...");
         }
         ChannelFuture channelFuture = serverBootstrap.bind(this.port);
-        logger.info("Server start success,bind port [],soBacklog: [],soKeepLive: [],tcpNodDelay: []",
+        logger.info("Server start success,bind port [{}],soBacklog: [{}],soKeepLive: [{}],tcpNodDelay: [{}]",
                 this.port,this.serverConfig.soBacklog,this.serverConfig.soKeepAlive,this.serverConfig.tcpNoDelay);
         this.channel = channelFuture.channel();
         this.channel.closeFuture();

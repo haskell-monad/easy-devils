@@ -17,6 +17,7 @@ public class HelloServiceImpl implements HelloService{
         System.out.println("hello "+name);
     }
 
+    @MethodExport
     @Override
     public String whois(String name) {
         return "I'am "+name;
