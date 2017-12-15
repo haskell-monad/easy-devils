@@ -6,6 +6,8 @@ import easy.devils.codec.DevilsMessage;
 import easy.devils.codec.DevilsResponse;
 import easy.devils.common.DevilsConstant;
 import easy.devils.protocol.EventType;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.slf4j.Logger;
@@ -33,5 +35,16 @@ public class DevilsClientHandler extends SimpleChannelInboundHandler<DevilsMessa
             response.setCode(DevilsConstant.HEARTBEAT_CODE);
         }
         future.getPromise().onReceive(response);
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        super.exceptionCaught(ctx, cause);
+        ctx.channel().close().addListener(new ChannelFutureListener() {
+            @Override
+            public void operationComplete(ChannelFuture channelFuture) throws Exception {
+               LOGGER.info("close channel remoteAddress: {}", ctx.channel().remoteAddress());
+            }
+        });
     }
 }

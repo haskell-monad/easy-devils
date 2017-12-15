@@ -7,6 +7,7 @@ import easy.devils.protocol.ServerInfo;
 import easy.devils.transport.NettyClient;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPool;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig;
+import org.apache.curator.x.discovery.ServiceInstance;
 
 /**
  * @author limengyu
@@ -18,9 +19,20 @@ public class FailFastHaStrategyImpl extends AbstractHaStrategy{
         super(config);
     }
 
+
     @Override
-    public Object call(DevilsMessage<DevilsRequest> message,AbstractLoadBalance loadBalance) {
-        ServerInfo<NettyClient> serverInfo = loadBalance.selectNode(message);
+    public Object call(DevilsMessage<DevilsRequest> message,AbstractLoadBalance<ServerInfo<NettyClient>> loadBalance) {
+        ServerInfo serverInfo = loadBalance.selectNode(message);
         return remoteCall(serverInfo, message, loadBalance);
+    }
+
+    @Override
+    public void onRegister(ServiceInstance serviceInstance) {
+
+    }
+
+    @Override
+    public void onUpdate(ServiceInstance serviceInstance) {
+
     }
 }

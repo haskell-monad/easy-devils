@@ -23,7 +23,6 @@ public abstract class AbstractServiceDiscovery<T> implements IServiceDiscovery<T
 
     public abstract void start() throws Exception;
 
-
     @Override
     public void subscribeService(String serviceName, AbstractServiceEventListener eventListener) {
         List<AbstractServiceEventListener<T>> eventList;

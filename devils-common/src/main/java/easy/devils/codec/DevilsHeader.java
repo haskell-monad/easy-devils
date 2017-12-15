@@ -1,6 +1,8 @@
 package easy.devils.codec;
 
 import easy.devils.common.DevilsConstant;
+import easy.devils.config.MethodExportConfig;
+import easy.devils.config.MethodProviderConfig;
 import easy.devils.protocol.VersionType;
 
 /**
@@ -86,7 +88,10 @@ public class DevilsHeader {
             builder.devilsHeader = new DevilsHeader(DevilsConstant.MAGIC,VersionType.V1.getVersion());
             return builder;
         }
+        public Builder loadFromConfig(MethodProviderConfig methodConfig){
 
+            return this;
+        }
         public Builder setMessageId(long messageId){
             devilsHeader.setMessageId(messageId);
             return this;

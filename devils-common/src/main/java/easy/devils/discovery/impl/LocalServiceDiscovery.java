@@ -8,7 +8,9 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 import easy.devils.common.DevilsConstant;
+import easy.devils.exception.DevilsFrameworkException;
 import org.apache.curator.x.discovery.ServiceInstance;
+import org.apache.curator.x.discovery.ServiceInstanceBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,8 +40,8 @@ public class LocalServiceDiscovery<T> extends AbstractServiceDiscovery<T> {
         this.address = DevilsConstant.LOCAL_DEFAULT_ADDRESS;
     }
 
-    public LocalServiceDiscovery(String address) {
-        this.address = address;
+    public void register(String serviceName){
+        registerLocal(serviceName,address);
     }
 
     @Override
@@ -47,7 +49,7 @@ public class LocalServiceDiscovery<T> extends AbstractServiceDiscovery<T> {
 
     }
 
-    public void registerLocal(String serviceName,String addressList) throws Exception {
+    public void registerLocal(String serviceName,String addressList){
         logger.debug("serviceName: {},addressList: {}",serviceName,addressList);
         Iterator<String> iterator = Splitter.on(",").split(addressList).iterator();
         while (iterator.hasNext()){
@@ -56,8 +58,13 @@ public class LocalServiceDiscovery<T> extends AbstractServiceDiscovery<T> {
             if(hostPort == null || hostPort.length != 2){
                 continue;
             }
-            ServiceInstance<T> serviceInstance = ServiceInstance
-                    .<T>builder()
+            ServiceInstanceBuilder<T> builder;
+            try {
+                builder = ServiceInstance.<T>builder();
+            } catch (Exception e) {
+                throw new DevilsFrameworkException();
+            }
+            ServiceInstance<T> serviceInstance = builder
                     .id(UUID.randomUUID().toString().replace("-", ""))
                     .name(serviceName)
                     .address(hostPort[0])

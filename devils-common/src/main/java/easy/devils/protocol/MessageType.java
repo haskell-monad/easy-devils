@@ -13,7 +13,7 @@ public enum MessageType {
     RESPONSE((byte) 1);
 
     private byte value;
-    private static final byte RESPONSE_TYPE_MESSAGE = (byte)(1 << 7);
+    public static final byte RESPONSE_TYPE_MESSAGE = (byte)(1 << 7);
 
 	MessageType(byte value) {
 		this.value = value;

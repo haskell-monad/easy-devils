@@ -13,8 +13,9 @@ public class HelloServiceImpl implements HelloService{
 
     @MethodExport
     @Override
-    public void sayHello(String name) {
+    public String sayHello(String name) {
         System.out.println("hello "+name);
+        return "hello "+name;
     }
 
     @MethodExport

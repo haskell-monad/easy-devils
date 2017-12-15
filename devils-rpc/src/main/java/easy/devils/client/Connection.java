@@ -81,7 +81,7 @@ public class Connection implements Closeable{
      * @return
      */
     public boolean ping() {
-        return false;
+        return true;
     }
 
     /**

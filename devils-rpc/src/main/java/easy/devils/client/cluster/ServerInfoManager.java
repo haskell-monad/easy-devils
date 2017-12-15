@@ -40,13 +40,13 @@ public class ServerInfoManager<T> extends AbstractServiceEventListener {
 	 * 从注册中心拉取服务实例，缓存到本地， 同时注册该服务监听，当该服务实例有变化时，会收到通知，
 	 * 然后执行相应监听方法@onRegister/@onUnRegister/onUnRegister
 	 */
-	public void init() {
-		this.cacheServiceInstanceList();
+	protected void init() {
+		cacheServiceInstanceList();
 	}
 	/**
 	 * 从注册中心拉取服务实例数据
 	 */
-	public void cacheServiceInstanceList() {
+	private void cacheServiceInstanceList() {
 		Collection<ServiceInstance<MetaInfo>> instanceList;
 		try {
 			instanceList = serviceDiscovery.queryServiceInstance(serviceName);

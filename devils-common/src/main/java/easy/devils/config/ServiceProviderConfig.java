@@ -54,6 +54,9 @@ public class ServiceProviderConfig {
     public Map<String, MethodProviderConfig> getMethodConfigMap() {
         return methodConfigMap;
     }
+    public MethodProviderConfig getMethodConfig(String methodName){
+        return methodConfigMap.get(methodName);
+    }
 
     public int getMaxThreadNum() {
         return maxThreadNum;

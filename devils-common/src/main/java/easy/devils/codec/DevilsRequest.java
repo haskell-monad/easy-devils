@@ -14,6 +14,15 @@ public class DevilsRequest implements Serializable{
     private String methodName;
     private Object[] params;
 
+    public DevilsRequest() {
+    }
+
+    public DevilsRequest(String serviceName, String methodName, Object[] params) {
+        this.serviceName = serviceName;
+        this.methodName = methodName;
+        this.params = params;
+    }
+
     public String getServiceName() {
         return serviceName;
     }

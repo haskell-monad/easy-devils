@@ -40,7 +40,7 @@ public class DevilsConstant {
     /**
      * 客户端连接超时
      */
-    public static final int CLIENT_TIME_OUT = 2000;
+    public static final int CLIENT_TIME_OUT = 200000;
     /**
      * 16-byte
      * 魔数 2-byte

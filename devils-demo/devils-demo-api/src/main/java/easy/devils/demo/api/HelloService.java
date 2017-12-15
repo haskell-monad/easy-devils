@@ -27,7 +27,7 @@ public interface HelloService {
             serialize = SerializeType.ProtoBuf,
             compress = CompressType.SNAPPY,
             timeout = DevilsConstant.CLIENT_TIME_OUT)
-    void sayHello(String name);
+    String sayHello(String name);
 
     @MethodProvider(
             methodName = "whois",

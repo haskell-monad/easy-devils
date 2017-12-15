@@ -3,6 +3,7 @@ package easy.devils.support.spring;
 import easy.devils.Devils;
 import easy.devils.config.MethodProviderConfig;
 import easy.devils.config.ServiceProviderConfig;
+import easy.devils.discovery.AbstractServiceDiscovery;
 import easy.devils.discovery.IServiceDiscovery;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.FactoryBean;
@@ -30,7 +31,7 @@ public class DevilsProxyFactoryBean implements FactoryBean<Object>,InitializingB
     /**
      * 注册中心
      */
-    private IServiceDiscovery registry;
+    private AbstractServiceDiscovery registry;
     /**
      * 生成的代理对象
      */
@@ -86,7 +87,7 @@ public class DevilsProxyFactoryBean implements FactoryBean<Object>,InitializingB
         return registry;
     }
 
-    public void setRegistry(IServiceDiscovery registry) {
+    public void setRegistry(AbstractServiceDiscovery registry) {
         this.registry = registry;
     }
 }

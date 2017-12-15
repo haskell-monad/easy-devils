@@ -48,7 +48,7 @@ public class DevilsServerHandler extends SimpleChannelInboundHandler<DevilsMessa
         DevilsHeader devilsHeader = devilsMessage.getDevilsHeader();
         if(EventType.isHeartbeat(devilsHeader.getExtend())){
             //心跳消息
-            channelHandlerContext.writeAndFlush(devilsHeader);
+            channelHandlerContext.writeAndFlush(devilsMessage);
             return;
         }
         //通过路由查询相应的服务
@@ -95,9 +95,10 @@ class InvokerServiceRunnable implements Runnable {
             DevilsContext.removeDevilsContext();
         }
         //返回响应
-        byte extend = (byte)(devilsMessage.getDevilsHeader().getExtend() | MessageType.RESPONSE.getValue());
+        byte extend = (byte)(devilsMessage.getDevilsHeader().getExtend() | MessageType.RESPONSE_TYPE_MESSAGE);
         devilsMessage.getDevilsHeader().setExtend(extend);
         response.setResult(result);
-        channelHandlerContext.writeAndFlush(new DevilsMessage<>(devilsMessage.getDevilsHeader(), response));
+        DevilsMessage<DevilsResponse> message = new DevilsMessage<>(devilsMessage.getDevilsHeader(), response);
+        channelHandlerContext.writeAndFlush(message);
     }
 }

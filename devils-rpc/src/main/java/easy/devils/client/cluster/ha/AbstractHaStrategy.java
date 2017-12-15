@@ -3,6 +3,7 @@ package easy.devils.client.cluster.ha;
 import easy.devils.client.NettyResponseFuture;
 import easy.devils.codec.DevilsResponse;
 import easy.devils.common.DevilsConstant;
+import easy.devils.discovery.AbstractServiceEventListener;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPool;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig;
 
@@ -16,6 +17,7 @@ import easy.devils.codec.DevilsRequest;
 import easy.devils.exception.DevilsFrameworkException;
 import easy.devils.protocol.ServerInfo;
 import easy.devils.transport.NettyClient;
+import org.apache.curator.x.discovery.ServiceInstance;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,14 +27,14 @@ import java.util.concurrent.TimeUnit;
  * @author limengyu
  * @create 2017/11/28
  */
-public abstract class AbstractHaStrategy implements IHaStrategy{
+public abstract class AbstractHaStrategy extends AbstractServiceEventListener implements IHaStrategy<ServerInfo<NettyClient>>{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractHaStrategy.class);
 
     /**
      * 连接对象池
      */
-    private GenericKeyedObjectPool<ServerInfo<NettyClient>,Connection> pool;
+    private NettyClientConnectionPool pool;
 
     public AbstractHaStrategy(GenericKeyedObjectPoolConfig config) {
         this.pool = new NettyClientConnectionPool(new NettyClientConnectionFactory(),config);
@@ -73,4 +75,12 @@ public abstract class AbstractHaStrategy implements IHaStrategy{
         return result;
     }
 
+    /**
+     * 服务下线时,清除链接
+     * @param serviceInstance
+     */
+    @Override
+    public void onUnRegister(ServiceInstance serviceInstance) {
+        pool.clear(new ServerInfo<>(serviceInstance));
+    }
 }

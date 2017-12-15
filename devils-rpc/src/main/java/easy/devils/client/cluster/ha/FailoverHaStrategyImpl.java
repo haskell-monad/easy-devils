@@ -7,6 +7,7 @@ import easy.devils.protocol.ServerInfo;
 import easy.devils.transport.NettyClient;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPool;
 import org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig;
+import org.apache.curator.x.discovery.ServiceInstance;
 
 /**
  * @author limengyu
@@ -19,7 +20,17 @@ public class FailoverHaStrategyImpl extends AbstractHaStrategy {
     }
 
     @Override
-    public Object call(DevilsMessage<DevilsRequest> message, AbstractLoadBalance loadBalance) {
+    public Object call(DevilsMessage<DevilsRequest> message, AbstractLoadBalance<ServerInfo<NettyClient>> loadBalance) {
         return null;
+    }
+
+    @Override
+    public void onRegister(ServiceInstance serviceInstance) {
+
+    }
+
+    @Override
+    public void onUpdate(ServiceInstance serviceInstance) {
+
     }
 }
