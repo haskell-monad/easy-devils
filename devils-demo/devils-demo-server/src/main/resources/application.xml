@@ -22,8 +22,8 @@
     <devils:server id="devilsHttpService" registry="register" host="192.168.99.60" startHttpServer="false"/>
 
     <!--拦截器配置-->
-    <!--<devils:interceptors>-->
-        <!--<devils:interceptor id="metricInterceptor" class="xxxx" auto-match="public *(*)"/>-->
-    <!--</devils:interceptors>-->
+    <devils:interceptors>
+        <devils:interceptor id="metricInterceptor" class="xxxx" auto-match="public *(*)"/>
+    </devils:interceptors>
 
 </beans>

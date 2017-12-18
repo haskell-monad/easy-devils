@@ -12,10 +12,7 @@ import java.util.stream.IntStream;
 public class NettyClientTest {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-client.xml");
-
-        for (int i = 0;i < 100;i++){
-            HelloService helloService = (HelloService)context.getBean("helloService");
-            helloService.sayHello("world_" + i);
-        }
+        HelloService helloService = (HelloService)context.getBean("helloService");
+        IntStream.range(0,100).forEach(i -> helloService.sayHello("world_" + i));
     }
 }

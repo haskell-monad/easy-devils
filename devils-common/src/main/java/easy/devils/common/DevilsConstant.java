@@ -36,11 +36,11 @@ public class DevilsConstant {
     /**
      * 服务端连接超时
      */
-    public static final int CONNECTION_TIME_OUT = 5000;
+    public static final int CONNECTION_TIME_OUT = 2000;
     /**
      * 客户端连接超时
      */
-    public static final int CLIENT_TIME_OUT = 200000;
+    public static final int CLIENT_TIME_OUT = 5000;
     /**
      * 16-byte
      * 魔数 2-byte

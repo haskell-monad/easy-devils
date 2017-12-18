@@ -17,6 +17,7 @@ public class Promise<T> implements Callback<T>,Future<T>{
     public void onReceive(T message) {
         synchronized (this){
             this.message = message;
+            latch.countDown();
         }
     }
 
