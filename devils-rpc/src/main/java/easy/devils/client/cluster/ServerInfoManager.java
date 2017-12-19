@@ -41,6 +41,7 @@ public class ServerInfoManager<T> extends AbstractServiceEventListener {
 	 * 然后执行相应监听方法@onRegister/@onUnRegister/onUnRegister
 	 */
 	protected void init() {
+		LOGGER.info("exec ServerInfoManager init()");
 		cacheServiceInstanceList();
 	}
 	/**

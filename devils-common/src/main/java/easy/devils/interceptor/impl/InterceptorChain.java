@@ -31,7 +31,7 @@ public class InterceptorChain implements InvokerInterceptor {
         boolean noInterrupt = true;
         Iterator<InvokerInterceptor> iterator = interceptors.iterator();
         while (noInterrupt && iterator.hasNext()){
-            noInterrupt = iterator.next().afterInvoker(target,method,params);
+            noInterrupt = iterator.next().afterInvoker(target, method, params);
         }
         return noInterrupt;
     }
@@ -50,10 +50,9 @@ public class InterceptorChain implements InvokerInterceptor {
 
     /**
      * 添加拦截器
-     * @param index
      * @param invokerInterceptor
      */
-    public void addInterceptor(int index,InvokerInterceptor invokerInterceptor){
-        interceptors.add(index,invokerInterceptor);
+    public void addInterceptor(InvokerInterceptor invokerInterceptor){
+        interceptors.add(invokerInterceptor);
     }
 }

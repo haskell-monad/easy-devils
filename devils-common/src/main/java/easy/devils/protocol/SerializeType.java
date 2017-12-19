@@ -85,5 +85,10 @@ public enum SerializeType {
         System.out.println(1 << 4);
         System.out.println(1 << 5);
         System.out.println(1 << 6);
+        System.out.println("===============");
+        System.out.println(7 | 0);
+        System.out.println(7 | 8);
+        System.out.println(7 | 16);
+        System.out.println(23 & 24);
     }
 }

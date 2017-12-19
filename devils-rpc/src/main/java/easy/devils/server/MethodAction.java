@@ -77,14 +77,13 @@ public class MethodAction {
 
     /**
      * 为方法添加拦截器
-     * @param index
      * @param invokerInterceptor
      */
-    public void addInterceptor(int index,InvokerInterceptor invokerInterceptor){
+    public void addInterceptor(InvokerInterceptor invokerInterceptor){
         if(interceptorChain == null){
             interceptorChain = new InterceptorChain();
         }
-        interceptorChain.addInterceptor(index,invokerInterceptor);
+        interceptorChain.addInterceptor(invokerInterceptor);
     }
 
     public RateLimiter getRateLimiter() {

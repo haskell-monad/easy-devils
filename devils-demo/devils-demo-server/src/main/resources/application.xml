@@ -23,7 +23,7 @@
 
     <!--拦截器配置-->
     <devils:interceptors>
-        <devils:interceptor id="metricInterceptor" class="xxxx" auto-match="public *(*)"/>
+        <devils:interceptor id="metricInterceptor" class="easy.devils.support.interceptor.MetricInterceptor" auto-match="public *(*)"/>
     </devils:interceptors>
 
 </beans>

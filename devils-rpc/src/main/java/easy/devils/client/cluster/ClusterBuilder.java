@@ -37,12 +37,12 @@ public class ClusterBuilder {
                                                          String serviceName,
                                                          FailoverCheckManager checkManager) {
         switch (loadBalanceType){
+            case RANDOM:
+                return new RandomLoadBalanceImpl<>(serviceDiscovery,serviceName,checkManager);
             case HASH:
                 return new HashLoadBalanceImpl<>(serviceDiscovery,serviceName,checkManager);
             case POLL:
                 return new PollLoadBalanceImpl<>(serviceDiscovery,serviceName,checkManager);
-            case RANDOM:
-                return new RandomLoadBalanceImpl<>(serviceDiscovery,serviceName,checkManager);
             case ROBBIN:
                 return new RobbinLoadBalanceImpl<>(serviceDiscovery,serviceName,checkManager);
             case WEIGHT:

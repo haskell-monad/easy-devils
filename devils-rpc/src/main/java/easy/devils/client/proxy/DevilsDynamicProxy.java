@@ -1,5 +1,6 @@
 package easy.devils.client.proxy;
 
+import com.google.common.collect.Maps;
 import easy.devils.annotation.MethodProvider;
 import easy.devils.annotation.ServiceProvider;
 import easy.devils.client.cluster.FailoverCheckManager;
@@ -31,7 +32,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 注解 < xml配置
  * @author limengyu
  * @create 2017/12/12
  */
@@ -46,6 +46,7 @@ public class DevilsDynamicProxy implements InvocationHandler{
     private AbstractHaStrategy haStrategy;
     private AbstractLoadBalance loadBalance;
     private GenericKeyedObjectPoolConfig config;
+
 
     public DevilsDynamicProxy(Class<?> serviceInterface,
                               ServiceProviderConfig providerConfig,
@@ -65,6 +66,7 @@ public class DevilsDynamicProxy implements InvocationHandler{
         }
         //订阅事件,服务下线时清除链接
         this.serviceDiscovery.subscribeService(serviceName,haStrategy);
+        LOGGER.info("==============11111======================");
     }
 
     public static <T> T newProxyInstance(Class<T> interfaceClass,ServiceProviderConfig providerConfig,AbstractServiceDiscovery discovery,FailoverCheckManager checkManager){
@@ -155,7 +157,7 @@ public class DevilsDynamicProxy implements InvocationHandler{
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         MethodProvider methodProvider = method.getDeclaredAnnotation(MethodProvider.class);
         if(methodProvider == null){
-            LOGGER.warn("method [{}] not found @MethodProvider",method.getName());
+            LOGGER.warn("method [{}] not found @MethodProvider", method.getName());
             return null;
         }
         String methodName = StringUtils.isBlank(methodProvider.methodName()) ? method.getName() : methodProvider.methodName();
@@ -164,8 +166,7 @@ public class DevilsDynamicProxy implements InvocationHandler{
         DevilsHeader devilsHeader = DevilsHeader.Builder.createBuilder()
                 .loadFromConfig(methodConfig)
                 .builder();
-        DevilsRequest request = new DevilsRequest(serviceName,methodName,args);
-        DevilsMessage<DevilsRequest> message = new DevilsMessage<>(devilsHeader,request);
+        DevilsMessage<DevilsRequest> message = new DevilsMessage<>(devilsHeader,new DevilsRequest(serviceName,methodName,args));
         return haStrategy.call(message,loadBalance);
     }
 

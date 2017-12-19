@@ -40,6 +40,10 @@ public class DevilsContext {
         return getDevilsContext().attributes.get(key);
     }
 
+    public static void setAttributeValue(String key,String value){
+        getDevilsContext().attributes.put(key,value);
+    }
+
     public static void setDevilsContext(Channel channel,DevilsMessage devilsMessage){
         THREAD_LOCAL.set(new DevilsContext(channel,devilsMessage));
     }

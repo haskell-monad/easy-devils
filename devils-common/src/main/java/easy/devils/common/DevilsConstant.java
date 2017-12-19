@@ -29,6 +29,13 @@ public class DevilsConstant {
     public static final int WEIGHT_MIN = 1;
 
     /**
+     * 默认Guava RateLimiter value
+     * 根据指定的稳定吞吐率创建RateLimiter，
+     * 这里的吞吐率是指每秒多少许可数（通常是指QPS，每秒多少查询）
+     */
+    public static final double DEFAULT_RATE = 1000;
+
+    /**
      * zk基础路径
      *
      */

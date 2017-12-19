@@ -4,6 +4,7 @@ import easy.devils.common.DevilsConstant;
 import easy.devils.config.MethodExportConfig;
 import easy.devils.config.MethodProviderConfig;
 import easy.devils.protocol.VersionType;
+import easy.devils.utils.DevilsUtils;
 
 /**
  * @author limengyu
@@ -89,7 +90,7 @@ public class DevilsHeader {
             return builder;
         }
         public Builder loadFromConfig(MethodProviderConfig methodConfig){
-
+            devilsHeader.setExtend(DevilsUtils.getExtend(methodConfig.getSerializeType(),methodConfig.getCompressType()));
             return this;
         }
         public Builder setMessageId(long messageId){
@@ -120,5 +121,7 @@ public class DevilsHeader {
         System.out.println(2 | (1 << 3));
         System.out.println(2 | (1 << 4));
         System.out.println("========================");
+        System.out.println((23 & 24) == (1 << 4));
+        System.out.println(23 & 7);
     }
 }

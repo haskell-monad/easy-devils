@@ -33,7 +33,7 @@ public class DevilsServerHandler extends SimpleChannelInboundHandler<DevilsMessa
     /**
      * 业务线程池
      */
-    private static ExecutorService executor = new StandardThreadExecutor();
+    private final static ExecutorService executor = new StandardThreadExecutor();
     /**
      * 服务路由
      */

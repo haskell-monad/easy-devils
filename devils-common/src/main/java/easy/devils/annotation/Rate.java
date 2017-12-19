@@ -6,20 +6,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * 流控速率
+ */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Interceptor {
+public @interface Rate {
 
-    /**
-     * 拦截器类(优先使用)
-     * @return
-     */
-    Class<?> value() default Object.class;
-
-    /**
-     * beanId
-     * @return
-     */
-    String[] beanId() default {};
+    double value();
 }
