@@ -76,8 +76,8 @@ public class LocalServiceDiscovery<T> extends AbstractServiceDiscovery<T> {
 
     @Override
     public void registerService(ServiceInstance<T> serviceInstance) {
-        REGISTER_CENTER.put(serviceInstance.getId(),serviceInstance);
-        notify(serviceInstance, IServiceEventListener.ServiceEventType.ON_REGISTER);
+//        REGISTER_CENTER.put(serviceInstance.getId(),serviceInstance);
+//        notify(serviceInstance, IServiceEventListener.ServiceEventType.ON_REGISTER);
     }
 
     @Override

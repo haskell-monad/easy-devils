@@ -20,6 +20,7 @@
     <!--<bean id="hystrixAspect" class="com.netflix.hystrix.contrib.javanica.aop.aspectj.HystrixCommandAspect"></bean>-->
 
     <devils:registry id="register" name="register-center" protocol="local" address="127.0.0.1:2181" />
+    <!--<devils:registry id="register" name="register-center" protocol="zookeeper" address="172.172.172.47:2181" />-->
 
     <devils:reference registry="register" interface="easy.devils.demo.api.HelloService">
         <devils:method name="sayHello" compressType="GZIP" serializeType="FastJson" timeout="5000"/>

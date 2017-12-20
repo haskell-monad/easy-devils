@@ -16,7 +16,6 @@ import easy.devils.protocol.SerializeType;
         serviceName = "helloService",
         haStrategyType = HaStrategyType.FAIL_FAST,
         loadBalanceType = LoadBalanceType.RANDOM,
-        weight = 10,
         group = "v1.1.0",
         host = {"192.168.0.1:2181","192.168.0.2:2181"},
         connectionTimeOut = DevilsConstant.CONNECTION_TIME_OUT)

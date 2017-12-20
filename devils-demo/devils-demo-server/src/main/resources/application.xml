@@ -17,6 +17,7 @@
 
     <!--注册中心配置-->
     <devils:registry id="register" name="register-center" protocol="local" address="127.0.0.1:2181"/>
+    <!--<devils:registry id="register" name="register-center" protocol="zookeeper" address="172.172.172.47:2181"/>-->
 
     <!--Http服务-->
     <devils:server id="devilsHttpService" registry="register" host="192.168.99.60" startHttpServer="false"/>

@@ -34,6 +34,6 @@ public enum Discovery {
     }
 
     public static void main(String[] args) {
-        System.out.println(getClassTypeByProtocol("local"));
+        System.out.println(getClassTypeByProtocol("zookeeper"));
     }
 }

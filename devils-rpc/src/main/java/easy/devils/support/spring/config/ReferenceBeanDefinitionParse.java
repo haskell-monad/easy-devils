@@ -61,7 +61,7 @@ public class ReferenceBeanDefinitionParse implements BeanDefinitionParser{
         builder.addPropertyValue("methodProviderConfigMap",exportServiceMap);
         //注册中心
         String registry = element.getAttribute("registry");
-        if(StringUtils.isNotBlank(registry)){
+        if(StringUtils.isBlank(registry)){
             builder.addPropertyValue("registry",new LocalServiceDiscovery<>());
         }else{
             builder.addPropertyReference("registry",registry);

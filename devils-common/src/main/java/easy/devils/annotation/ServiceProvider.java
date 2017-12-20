@@ -41,22 +41,16 @@ public @interface ServiceProvider {
     int connectionTimeOut() default DevilsConstant.CONNECTION_TIME_OUT;
 
     /**
-     * 权重
+     * 指定主机列表
      * @return
      */
-    int weight() default 0;
+    String[] host() default {};
 
     /**
      * 所属组
      * @return
      */
     String group() default "default";
-
-    /**
-     * 指定主机列表
-     * @return
-     */
-    String[] host() default {};
 
     /**
      * 最大线程数

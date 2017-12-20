@@ -7,6 +7,9 @@ import easy.devils.discovery.AbstractServiceDiscovery;
 import easy.devils.protocol.ServerInfo;
 import easy.devils.transport.NettyClient;
 
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * 随机加权
  * @author limengyu
@@ -20,6 +23,8 @@ public class RandomWeightLoadBalanceImpl<T> extends AbstractLoadBalance<T> {
 
     @Override
     public ServerInfo<T> selectNode(DevilsMessage<DevilsRequest> devilsMessage) {
-        return null;
+        List<ServerInfo<T>> list = getAvailableServerInfoList();
+        int idx = (int) (ThreadLocalRandom.current().nextDouble() * list.size());
+        return list.get(idx % list.size());
     }
 }

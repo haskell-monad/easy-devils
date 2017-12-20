@@ -116,7 +116,6 @@ public class ServerBootstrap {
                 LOGGER.error("start DevilsServer error",e);
                 throw new DevilsFrameworkException(e);
             }
-
         }
     }
 

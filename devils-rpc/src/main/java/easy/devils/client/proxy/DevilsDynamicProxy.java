@@ -1,11 +1,21 @@
 package easy.devils.client.proxy;
 
-import com.google.common.collect.Maps;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import easy.devils.annotation.MethodProvider;
 import easy.devils.annotation.ServiceProvider;
+import easy.devils.client.cluster.ClusterBuilder;
 import easy.devils.client.cluster.FailoverCheckManager;
 import easy.devils.client.cluster.ha.AbstractHaStrategy;
-import easy.devils.client.cluster.ClusterBuilder;
 import easy.devils.client.cluster.loadbalance.AbstractLoadBalance;
 import easy.devils.codec.DevilsHeader;
 import easy.devils.codec.DevilsMessage;
@@ -20,16 +30,6 @@ import easy.devils.exception.DevilsExceptionConstant;
 import easy.devils.exception.DevilsFrameworkException;
 import easy.devils.processor.AbstractAnnotationProcessorProvider;
 import easy.devils.processor.IAnnotationProcessor;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.pool2.impl.GenericKeyedObjectPoolConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author limengyu
@@ -102,7 +102,6 @@ public class DevilsDynamicProxy implements InvocationHandler{
                 .setHaStrategyType(defaultServiceProvider.haStrategyType())
                 .setLoadBalanceType(defaultServiceProvider.loadBalanceType())
                 .setGroup(defaultServiceProvider.group())
-                .setWeight(defaultServiceProvider.weight())
                 .setMaxThreadNum(defaultServiceProvider.maxThreadNum())
                 .setConnectionTimeOut(defaultServiceProvider.connectionTimeOut())
                 .build();

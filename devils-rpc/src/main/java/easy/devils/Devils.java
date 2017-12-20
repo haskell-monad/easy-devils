@@ -34,6 +34,10 @@ public class Devils {
         return DevilsDynamicProxy.newProxyInstance(interfaceClass,null,new LocalServiceDiscovery<>(),new FailoverCheckManager());
     }
 
+    public static <T> T newProxyInstance(Class<T> interfaceClass,AbstractServiceDiscovery discovery){
+        return DevilsDynamicProxy.newProxyInstance(interfaceClass,null,discovery,new FailoverCheckManager());
+    }
+
     public static <T> T newProxyInstance(Class<T> interfaceClass,ServiceProviderConfig providerConfig){
         return DevilsDynamicProxy.newProxyInstance(interfaceClass,providerConfig,new LocalServiceDiscovery<>(),new FailoverCheckManager(),new GenericKeyedObjectPoolConfig());
     }
